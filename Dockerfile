@@ -11,8 +11,7 @@ RUN yum-config-manager --enable epel
 RUN yum -y install git python-pip autoconf make libpng-devel libcurl-devel gcc python-devel libjpeg-devel autoconf nasm sudo yum-config-manager python-virtualenv
 RUN yum -y install jbigkit-libs optipng pngcrush gifsicle 'libjpeg*' pngquant ImageMagick-devel
 
+RUN pip uninstall pycurl || true
 ENV PYCURL_SSL_LIBRARY=openssl
 RUN pip install pycurl
 RUN yum -y reinstall perl-libs perl-*
-
-

@@ -3,10 +3,10 @@
 # This assumes all of the OS-level configuration has been completed and git repo has already been cloned
 #sudo yum-config-manager --enable epel
 #sudo yum update -y
-#sudo yum install git libpng-devel libcurl-devel gcc python-devel libjpeg-devel -y
-#sudo pip install --upgrade pip
+#sudo yum install git libpng-devel libcurl-devel gcc python-devel libjpeg-devel autoconf nasm -y
+#sudo pip install --upgrade pip==9.0.3
 #alias sudo='sudo env PATH=$PATH'
-#sudo  pip install --upgrade setuptools
+##sudo  pip install --upgrade setuptools
 #sudo pip install --upgrade virtualenv
 
 # This script should be run from the repo's deployment directory
@@ -45,6 +45,7 @@ echo "virtualenv env"
 virtualenv env
 echo "source env/bin/activate"
 source env/bin/activate
+pip install  --upgrade pip==9.0.3 --target=$deployment_dir/dist/env/lib/python2.7/site-packages/ 
 echo "pip install $deployment_dir/../source/image-handler-custom-resource/. --target=$deployment_dir/dist/env/lib/python2.7/site-packages/"
 pip install $deployment_dir/../source/image-handler-custom-resource/. --target=$deployment_dir/dist/env/lib/python2.7/site-packages/
 cd $deployment_dir/dist/env/lib/python2.7/site-packages/
@@ -60,6 +61,7 @@ echo "virtualenv env"
 virtualenv env
 echo "source env/bin/activate"
 source env/bin/activate
+pip install --upgrade  pip==9.0.3 --target=$deployment_dir/dist/env/lib/python2.7/site-packages/
 cd ../..
 pwd
 echo "pip install source/image-handler/. --target=$VIRTUAL_ENV/lib/python2.7/site-packages/"
